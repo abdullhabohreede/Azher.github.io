@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة المدونة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            width: 100%;
+            height: 150px;
+            background: url('your-image.jpg') no-repeat center;
+            background-size: cover;
+        }
+        .banner {
+            width: 100%;
+            height: 100px;
+            background: url('https://drive.google.com/uc?export=download&id=15rD5Xcsa1WH0rjuy38cagLJdqBJuVSA6') no-repeat center;
+            background-size: cover;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 24px;
+            color: #000000;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .search-container {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-container input[type="text"] {
+            padding: 8px;
+            width: 80%;
+            font-size: 14px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .search-container button {
+            padding: 8px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+        .content {
+            margin: 10px;
+            font-size: 16px;
+        }
+        .footer {
+            width: 100%;
+            background-color: #f8f8f8;
+            padding: 5px 0;
+            color: #800000;
+            font-size: 16px;
+        }
+        .result-table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-size: 18px;
+            display: none;
+        }
+        .result-table th, .result-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        .result-table th {
+            background-color: #007BFF;
+            color: white;
+            width: 40%;
+        }
+        .result-table td {
+            width: 60%;
+        }
+        .total-row td {
+            background-color: #f8f8f8;
+        }
+        .percentage-row td {
+            background-color: #e0e0e0; /* خلفية رمادية أغمق للنسبة */
+        }
+        .student-name td {
+            white-space: nowrap; /* منع التفاف النص لاسم الطالب */
+        }
+        .error-message {
+            color: red;
+            font-size: 18px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="banner"></div>
+    <h1 class="title">نتيجة الثانوية الأزهرية الدور الثاني ٢٠٢٤/٢٠٢٥</h1>
+    <div class="search-container">
+        <input type="text" id="nationalId" placeholder=" أدخل الرقم القومي أو رقم الجلوس">
+        <button onclick="checkNationalId()">بحث</button>
+    </div>
+    <div class="content">
+        هذه النتيجة استرشادية فقط وفي حالة الرغبة في معرفة الدرجات يرجى مراجعة المعهد خلال يومين من تاريخ إعلان النتيجة  
+    </div>
+    <div id="result-container">
+        <table id="result-table" class="result-table">
+            <tr>
+                <th>الحالة</th>
+                <td>ناجح</td>
+            </tr>
+            <tr class="total-row">
+                <th>المجموع</th>
+                <td>535 من 650</td>
+            </tr>
+            <tr>
+                <th>المحافظة</th>
+                <td>سوهاج</td>
+            </tr>
+            <tr>
+                <th>المعهد</th>
+                <td>الغريزات</td>
+            </tr>
+            <tr>
+                <th>الإدارة التعليمية</th>
+                <td>المراغة</td>
+            </tr>
+            <tr class="student-name">
+                <th>اسم الطالب</th>
+                <td>عبدالله عبدالرحيم عبدالغفار محمد</td>
+            </tr>
+            <tr>
+                <th>القسم</th>
+                <td>علمي</td>
+            </tr>
+            <tr class="percentage-row">
+                <th>النسبة</th>
+                <td>82%</td>
+            </tr>
+        </table>
+        <div id="error-message" class="error-message">الرقم القومي غير صحيح. يرجى إدخال الرقم الصحيح.</div>
+    </div>
+    <div class="footer">الرئيسية</div>
+
+    <script>
+        function checkNationalId() {
+            const nationalId = document.getElementById('nationalId').value;
+            const resultTable = document.getElementById('result-table');
+            const errorMessage = document.getElementById('error-message');
+
+            // إخفاء الجدول ورسالة الخطأ في البداية
+            resultTable.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            // التحقق من الرقم القومي أو الرقم الجديد
+            if (nationalId === '30511262601616' || nationalId === '147842') {
+                resultTable.style.display = 'table'; // إظهار الجدول
+            } else {
+                errorMessage.style.display = 'block'; // إظهار رسالة الخطأ
+            }
+        }
+    </script>
+</body>
+</html>
